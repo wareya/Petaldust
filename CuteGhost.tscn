@@ -1,0 +1,204 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://CuteGhost.gd" type="Script" id=1]
+[ext_resource path="res://Pusher2.gd" type="Script" id=2]
+[ext_resource path="res://art/entities/mychar.png" type="Texture" id=3]
+[ext_resource path="res://art/entities/lightglow.png" type="Texture" id=4]
+[ext_resource path="res://art/entities/blob.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 2, 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "white"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 4.81641, 6.31116, -4.81641, -6.31116, 6, -21, -6.97549, -2.49125, 6.97549, 2.49125, 21, -33, 1.49475, -6.64332, -1.49475, 6.64332, 27, -12, 9.08425, 4.53282, -9.08425, -4.53282, 13, -7, 8.71575, 5.16848, -8.71575, -5.16848, -4, -26, 2.31706, -9.78862, -2.31706, 9.78862, -27, -17, -4.31816, -2.34375, 4.31816, 2.34375, -13, 1, -7.31181, -0.81838, 7.31181, 0.81838, 5, 6, -3.6092, 4.80414, 3.6092, -4.80414, 20, 0, 2.5361, 7.10087, -2.5361, -7.10087, 22, -18, 11.6258, -1.66083, -11.6258, 1.66083, 1, -32, 3.65798, -5.60241, -3.65798, 5.60241, -18, -17, -3.91772, -6.15645, 3.91772, 6.15645, -22, 0, -7.85864, 1.28009, 7.85864, -1.28009, -5, 7, 7.63982, 4.15208, -7.63982, -4.15208, -5, -15, 2.71006, 5.71991, -2.71006, -5.71991, -28, -26, -9.46674, 3.65383, 9.46674, -3.65383, -17, -41, -9.05881, -2.38642, 9.05881, 2.38642, 7, -43, 0.332166, -7.80591, -0.332166, 7.80591, 21, -25, 5.24617, 6.59518, -5.24617, -6.59518, 6, -21 )
+}
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Sprite
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+var arot = 0
+func _process(delta):
+    arot += delta
+    rotation = get_parent().rotation*-1 + arot
+    pass
+"
+
+[sub_resource type="GradientTexture" id=7]
+width = 1
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 5, 7 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 3, -1, 5, 0, -5, 0, -3, -1 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+custom_solver_bias = 1.0
+points = PoolVector2Array( 3, -1, 5, 0, 5, 13, 3, 14, -3, 14, -5, 13, -5, 0, -3, -1 )
+
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 5.0
+height = 5.0
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 7, 2 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( -5, -1, -4, -4, 4, -4, 5, -1 )
+
+[node name="CuteGhost" type="KinematicBody2D" groups=[
+"Player",
+]]
+position = Vector2( 344, 184 )
+collision_layer = 2
+collision_mask = 7
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "stand"
+anims/jump = SubResource( 1 )
+anims/stand = SubResource( 2 )
+anims/walk = SubResource( 3 )
+anims/white = SubResource( 4 )
+
+[node name="LightWander" type="Path2D" parent="."]
+visible = false
+position = Vector2( 0, 11 )
+curve = SubResource( 5 )
+
+[node name="Follower" type="PathFollow2D" parent="LightWander"]
+position = Vector2( 27.326, -13.7336 )
+rotation = 1.79205
+offset = 44.93
+
+[node name="Light2D" type="Light2D" parent="LightWander/Follower"]
+texture = ExtResource( 4 )
+texture_scale = 1.4
+color = Color( 0.552941, 0.760784, 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="LightWander/Follower"]
+z_index = 1
+texture = ExtResource( 5 )
+script = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 4.76837e-06 )
+texture = ExtResource( 3 )
+normal_map = SubResource( 7 )
+offset = Vector2( 0, -8 )
+hframes = 8
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 1 )
+shape = SubResource( 8 )
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -6 )
+shape = SubResource( 9 )
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -6 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 0.5 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="Camera" type="Camera2D" parent="."]
+visible = false
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Pusher2" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Shape" type="CollisionShape2D" parent="Pusher2"]
+shape = SubResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, -6 )
+shape = SubResource( 13 )

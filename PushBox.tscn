@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://MyBox.gd" type="Script" id=1]
+[ext_resource path="res://art/tiles/castle-tileset.png" type="Texture" id=2]
+[ext_resource path="res://sounds/PushLoop.wav" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 8 )
+
+[node name="PushBox" type="KinematicBody2D" groups=[
+"Pushbox",
+]]
+position = Vector2( 312, 184 )
+collision_layer = 4
+collision_mask = 45
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+vframes = 16
+hframes = 8
+frame = 57
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Emitter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

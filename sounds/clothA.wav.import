@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/clothA.wav-2579d69da07c29c1adf2925e27b2cbfa.sample"
+
+[deps]
+
+source_file="res://sounds/clothA.wav"
+dest_files=[ "res://.import/clothA.wav-2579d69da07c29c1adf2925e27b2cbfa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

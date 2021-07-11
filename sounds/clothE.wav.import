@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/clothE.wav-04b522d0bfbc3e896c604ef1974b29d2.sample"
+
+[deps]
+
+source_file="res://sounds/clothE.wav"
+dest_files=[ "res://.import/clothE.wav-04b522d0bfbc3e896c604ef1974b29d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

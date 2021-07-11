@@ -1,0 +1,39 @@
+{
+    "tiles": [
+        {
+            "name": "red", 
+            "texture": "example_red.png",
+            "collision": "scanline",
+            "tile_size": 16,
+            "type": "autotile"
+        },
+        {
+            "name": "kusa", 
+            "texture": "example_grass.png",
+            "collision": "scanline",
+            "tile_size": 16,
+            "type": "autotile"
+        },
+        {
+            "name": "dirt", 
+            "texture": "example_dirt.png",
+            "collision": "scanline",
+            "tile_size": 16,
+            "type": "autotile"
+        },
+        {
+            "name": "minigen", 
+            "texture": "example_minitiles.png",
+            "collision": "scanline",
+            "tile_size": 16,
+            "type": "minitiles"
+        },
+        {
+            "name": "blobby", 
+            "texture": "example_blobby.png",
+            "collision": "scanline",
+            "tile_size": 16,
+            "type": "minitiles"
+        }
+    ]
+}

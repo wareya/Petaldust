@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    pass # Replace with function body.
+
+export var velocity = Vector2(30, 0)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+    for _box in get_tree().get_nodes_in_group(\"Pushbox\"):
+        var box : Node2D = _box
+        if overlaps_body(box) or overlaps_area(box):
+            if sign(box.global_position.x - global_position.x) == sign(velocity.x):
+                box.velocity.x = min(30, abs(velocity.x))*sign(velocity.x)
+                box.tweaked = true
+    pass
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 2 )
+
+[node name="StaticBoxPusher" type="Area2D"]
+position = Vector2( 272, 184 )
+collision_layer = 8
+collision_mask = 4
+script = SubResource( 1 )
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )

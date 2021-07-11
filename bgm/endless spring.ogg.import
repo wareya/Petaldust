@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/endless spring.ogg-15f18a6b3f2510279506800b65dc9ad9.oggstr"
+
+[deps]
+
+source_file="res://bgm/endless spring.ogg"
+dest_files=[ "res://.import/endless spring.ogg-15f18a6b3f2510279506800b65dc9ad9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

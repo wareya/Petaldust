@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blockberakhigh.wav-e0e8dc7761678534a56d21362b6458da.sample"
+
+[deps]
+
+source_file="res://sounds/blockberakhigh.wav"
+dest_files=[ "res://.import/blockberakhigh.wav-e0e8dc7761678534a56d21362b6458da.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

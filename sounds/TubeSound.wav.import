@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TubeSound.wav-f2d56bb3c5d65ae7a8a1ac2b2e483d02.sample"
+
+[deps]
+
+source_file="res://sounds/TubeSound.wav"
+dest_files=[ "res://.import/TubeSound.wav-f2d56bb3c5d65ae7a8a1ac2b2e483d02.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

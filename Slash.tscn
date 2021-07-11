@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://art/entities/slash.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    pass # Replace with function body.
+
+var velocity : Vector2
+
+func set_velocity(x):
+    velocity = x
+
+func set_frame(x):
+    $Sprite.frame = x
+
+var player : Node2D
+var used = false
+
+var life = 0.2
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+    if !used:
+        for _obj in get_tree().get_nodes_in_group(\"Slashable\"):
+            var obj : Node = _obj
+            if overlaps_area(obj) or overlaps_body(obj):
+                if obj.has_method(\"slash\"):
+                    obj.slash(self, player)
+                if used:
+                    break
+    
+    global_position += velocity*delta
+    life -= delta
+    if life < 0:
+        hide()
+        queue_free()
+    else:
+        modulate.a = life/0.2
+    pass
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7, 4 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5, 6 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 3, 2 )
+
+[node name="Slash" type="Area2D"]
+script = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 10, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2( 10, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 10, 0 )
+texture = ExtResource( 1 )
+hframes = 4

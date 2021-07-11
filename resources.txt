@@ -1,0 +1,23 @@
+
+tile sets
+https://poltergasm.itch.io/reverie-grassland-assets
+https://bakudas.itch.io/generic-dungeon-pack
+https://ansimuz.itch.io/caverns-environment
+
+background
+https://vnitti.itch.io/grassy-mountains-parallax-background
+
+other tiles
+https://rottingpixels.itch.io/castle-platformer-tileset-16x16free (box)
+https://o-lobster.itch.io/platformmetroidvania-pixel-art-asset-pack (slime)
+https://szadiart.itch.io/pixel-fantasy-caves (scaffolds)
+https://finalbossblues.itch.io/cloud-city-tileset (sign)
+
+font
+https://fonts.google.com/specimen/Yusei+Magic
+
+ending image
+https://www.flickr.com/photos/hjppo/32293689654/
+https://www.flickr.com/photos/yellowstonenps/48795421263/
+
+might've forgotten something but everything else *should* be my own work (even the sound effects)

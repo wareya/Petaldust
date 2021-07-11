@@ -1,0 +1,387 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://singletons/Manager.gd" type="Script" id=1]
+[ext_resource path="res://singletons/SlantEffect.tres" type="RichTextEffect" id=2]
+[ext_resource path="res://singletons/TextboxFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://art/ui/textbox.png" type="Texture" id=4]
+[ext_resource path="res://art/ui/nametagbg.png" type="Texture" id=5]
+[ext_resource path="res://art/ui/ending bg.jpg" type="Texture" id=6]
+[ext_resource path="res://bgm/endless spring.ogg" type="AudioStream" id=7]
+[ext_resource path="res://art/ui/endcard.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -12.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fadeout"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.3, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -12.0, -18.337, -30.0, -80.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.732043, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.452
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1.86607, 1 ),
+"update": 0,
+"values": [ Vector2( 144, 64 ), Vector2( 144, 1200 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 0.933033, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ), Vector2( 3, 1.7 ), Vector2( 3, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 0.615572, 1.93187, 1 ),
+"update": 0,
+"values": [ Vector2( 280, 488 ), Vector2( 280, 445 ), Vector2( 280, 1200 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.621
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 2.73208, 0.615572, 2.29739, 0.406127 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( 1, 0.8 ), Vector2( 1, 0.35 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 2.46229 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label/Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -150, -100 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.17916, 0.32697, 0.5 ),
+"transitions": PoolRealArray( 2.73208, 0.5, 2.46228, 0.420448 ),
+"update": 0,
+"values": [ Vector2( 280, 320 ), Vector2( 280, 488 ), Vector2( 280, 400 ), Vector2( 280, 488 ) ]
+}
+
+[node name="HUD" type="CanvasLayer"]
+layer = 11
+script = ExtResource( 1 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+volume_db = -12.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BGM"]
+autoplay = "default"
+anims/default = SubResource( 1 )
+anims/fadeout = SubResource( 2 )
+
+[node name="EndingBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -12.0
+
+[node name="EndingBG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Endcard" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Endcard"]
+autoplay = "default"
+anims/default = SubResource( 3 )
+anims/show = SubResource( 4 )
+
+[node name="Textbox" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="Textbox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 280.0
+margin_top = 488.0
+margin_right = -258.0
+margin_bottom = -41.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.0823529, 0.117647, 0.172549, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = -3
+bbcode_enabled = true
+bbcode_text = "Yuyuko is hungry!"
+text = "Yuyuko is hungry!"
+custom_effects = [ ExtResource( 2 ) ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Textbox/Label"]
+position = Vector2( -150, -100 )
+scale = Vector2( 3, 3 )
+z_index = -1
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Tag" type="RichTextLabel" parent="Textbox/Label"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -78.0
+margin_top = -51.0
+margin_right = -444.0
+margin_bottom = -94.0
+rect_rotation = -5.09508
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/selection_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.14902, 0.156863, 0.184314, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = -3
+bbcode_enabled = true
+bbcode_text = "Youmu"
+text = "Youmu"
+custom_effects = [ ExtResource( 2 ) ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Textbox/Label/Tag"]
+position = Vector2( 137.937, 29.366 )
+scale = Vector2( 3, 3 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Textbox"]
+anims/fadeout = SubResource( 5 )
+anims/hide = SubResource( 6 )
+anims/show = SubResource( 7 )
+
+[node name="ComboLabel" type="Label" parent="."]
+margin_left = 1048.0
+margin_top = 16.0
+margin_right = 1233.0
+margin_bottom = 64.0
+rect_rotation = 7.2961
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0.52549, 0.713726, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.137255, 0.505882, 0.937255, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 1
+text = "420x Combo"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Label" parent="."]
+visible = false
+margin_left = 9.0
+margin_top = 4.0
+margin_right = 379.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

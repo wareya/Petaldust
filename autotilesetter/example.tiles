@@ -1,0 +1,20 @@
+{
+    "tiles": [
+        {
+            "name": "legacy_bg", 
+            "texture": "../art/tiles/legacy_bg_a.png",
+            "collision": "none",
+            "tile_size": 16,
+            "type": "autotile",
+            "no_filter": true
+        },
+        {
+            "name": "legacy_wall", 
+            "texture": "../art/tiles/legacy_wall_a.png",
+            "collision": "scanline",
+            "tile_size": 16,
+            "type": "autotile",
+            "no_filter": true
+        }
+    ]
+}

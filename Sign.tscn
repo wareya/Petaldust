@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://art/tiles/cloud_tileset.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    pass # Replace with function body.
+
+export(String, MULTILINE) var message : String = \"i am a sign\"
+
+func usable():
+    return true
+
+func cutscene():
+    Manager.textbox_show()
+    Manager.textbox_set_tag(\"\")
+    #Manager.set_bg(preload(\"res://art/adv/bg/test bg.png\"))
+    
+    Manager.textbox_set_typin(true)
+    #Manager.textbox_set_continue_icon(\"next\")
+    Manager.textbox_set_bbcode(message)
+    yield(Manager, \"cutscene_continue\")
+    
+    player.velocity = Vector2(0, 0)
+    #yield(Manager.follow_path(player, player.speed, $Path2D), \"completed\")
+    #player.animate_by_motion(Vector2(-1, 0))
+    
+    #Manager.textbox_set_bbcode(\"A small pond!\")
+    #yield(Manager, \"cutscene_continue\")
+    
+    #Manager.textbox_set_typin(true)
+    #Manager.textbox_set_continue_icon(\"done\")
+    #Manager.textbox_set_bbcode(\"Behold the waters!\")
+    #yield(Manager, \"cutscene_continue\")
+
+var player : Node
+
+func interact(other):
+    player = other
+    Manager.start_cutscene(self, \"cutscene\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#    pass
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="Sign" type="Area2D" groups=[
+"Interactable",
+]]
+script = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, 1 )
+vframes = 28
+hframes = 45
+frame = 871

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/clothB.wav-6f647df46240f43ba0d45c2aeb228965.sample"
+
+[deps]
+
+source_file="res://sounds/clothB.wav"
+dest_files=[ "res://.import/clothB.wav-6f647df46240f43ba0d45c2aeb228965.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
