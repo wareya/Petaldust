@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sounds/badbell.wav" type="AudioStream" id=1]
-[ext_resource path="res://Bell.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Bell.gd" type="Script" id=2]
 [ext_resource path="res://art/tiles/cloud_bells.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]

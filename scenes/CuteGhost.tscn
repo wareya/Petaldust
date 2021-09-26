@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://CuteGhost.gd" type="Script" id=1]
-[ext_resource path="res://Pusher2.gd" type="Script" id=2]
+[ext_resource path="res://scenes/CuteGhost.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Pusher2.gd" type="Script" id=2]
 [ext_resource path="res://art/entities/mychar.png" type="Texture" id=3]
 [ext_resource path="res://art/entities/lightglow.png" type="Texture" id=4]
 [ext_resource path="res://art/entities/blob.png" type="Texture" id=5]
@@ -116,6 +116,7 @@ extents = Vector2( 7, 2 )
 points = PoolVector2Array( -5, -1, -4, -4, 4, -4, 5, -1 )
 
 [node name="CuteGhost" type="KinematicBody2D" groups=[
+"Persist",
 "Player",
 ]]
 position = Vector2( 344, 184 )

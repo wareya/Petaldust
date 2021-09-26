@@ -10,6 +10,8 @@ extends KinematicBody2D
 func _ready():
     pass # Replace with function body.
 
+var ignore_used = true
+
 func slash(_attack, player):
     collision_mask = 0
     collision_layer = 0

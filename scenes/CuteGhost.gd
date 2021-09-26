@@ -94,7 +94,16 @@ func _process(delta):
     $LightWander.global_position = global_position.round()
     
     if Manager.input_mode == "gameplay" and Input.is_action_just_pressed("ui_end"):
+        Manager.bypass_loading = true
+        Manager.highest_combo = 0
+        Manager.reset_timer()
         get_tree().reload_current_scene()
+    
+    if Input.is_action_just_pressed("ui_home"):
+        if !Manager.timer_visible():
+            Manager.show_timer()
+        else:
+            Manager.hide_timer()
     
     if Manager.input_mode == "fadein":
         $AnimationPlayer.play("white")
@@ -102,7 +111,7 @@ func _process(delta):
     
     var wishdir = 0
     if Manager.input_mode != "cutscene":
-        if Input.is_action_just_pressed("ui_down"):
+        if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
             for _node in get_tree().get_nodes_in_group("Interactable"):
                 var node : Area2D = _node
                 if node.overlaps_body(self) and node.has_method("interact"):
@@ -207,7 +216,7 @@ func _process(delta):
         #var choice = list[randi() % list.size()]
         var choice = list[combo_counter % 4]
         EmitterFactory.emit(self, "slash"+choice)
-        var slash = preload("res://Slash.tscn").instance()
+        var slash = preload("res://scenes/Slash.tscn").instance()
         slash.player = self
         get_tree().get_root().add_child(slash)
         if !is_on_wall():

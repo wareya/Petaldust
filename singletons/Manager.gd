@@ -5,6 +5,108 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 
+func delete_save():
+    # FIXME: implement
+    pass
+
+func save_game():
+    var saved_game = File.new()
+    saved_game.open("user://PetaldustSave.save", File.WRITE)
+    var persisted_data = {}
+    for _node in persists.keys():
+        var node : Node2D = _node
+        if is_instance_valid(node):
+            var node_data = {}
+            node_data["x"] = node.position.x
+            node_data["y"] = node.position.y
+            if "hp" in node:
+                node_data["hp"] = node.hp
+            if "used" in node:
+                node_data["used"] = node.used
+            persisted_data[persists[node]] = node_data
+            
+    persisted_data["highest_combo"] = highest_combo
+    var elapsed_time = OS.get_system_time_msecs() - time
+    persisted_data["elapsed_time"] = elapsed_time
+    
+    saved_game.store_string(to_json(persisted_data))
+    saved_game.close()
+
+var bypass_loading = false
+
+func load_exists():
+    return File.new().file_exists("user://PetaldustSave.save")
+
+func load_game():
+    if bypass_loading:
+        bypass_loading = false
+        prepare_persists()
+        return
+    var saved_game = File.new()
+    if not saved_game.file_exists("user://PetaldustSave.save"):
+        return false
+    saved_game.open("user://PetaldustSave.save", File.READ)
+    var persisted_data = parse_json(saved_game.get_as_text())
+    saved_game.close()
+    print(persisted_data)
+    
+    if "highest_combo" in persisted_data:
+        highest_combo = persisted_data["highest_combo"]
+    
+    if "elapsed_time" in persisted_data:
+        time = OS.get_system_time_msecs() - persisted_data["elapsed_time"]
+    
+    var i = -1
+    for _node in get_tree().get_nodes_in_group("Persist"):
+        i += 1
+        var node : Node2D = _node
+        if not str(i) in persisted_data:
+            print("index %s not in list, erasing node" % i)
+            node.queue_free()
+            continue
+        for key in persisted_data[str(i)]:
+            var val = persisted_data[str(i)][key]
+            if key == "x":
+                node.position.x = val
+            elif key == "y":
+                node.position.y = val
+            elif key == "hp" and "hp" in node:
+                node.hp = val
+            elif key == "used" and "used" in node:
+                node.used = val
+        
+    for _node in get_tree().get_nodes_in_group("Trigger"):
+        i += 1
+        var node : Node2D = _node
+        if not str(i) in persisted_data:
+            print("index %s not in list, erasing node" % i)
+            node.queue_free()
+            continue
+        for key in persisted_data[str(i)]:
+            var val = persisted_data[str(i)][key]
+            if key == "x":
+                node.position.x = val
+            elif key == "y":
+                node.position.y = val
+            elif key == "hp" and "hp" in node:
+                node.hp = val
+            elif key == "used" and "used" in node:
+                node.used = val
+    return true
+
+var persists : Dictionary = {}
+func prepare_persists():
+    persists = {}
+    var i = 0
+    for _node in get_tree().get_nodes_in_group("Persist"):
+        var node : Node2D = _node
+        persists[node] = i
+        i += 1
+    for _node in get_tree().get_nodes_in_group("Trigger"):
+        var node : Node2D = _node
+        persists[node] = i
+        i += 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +133,8 @@ func show_timer():
     $Timer.show()
 func hide_timer():
     $Timer.hide()
+func timer_visible():
+    return $Timer.visible
 
 var cutscene_inertia_thing = true
 var highest_combo = 0
@@ -90,7 +194,7 @@ func _process(delta):
             $ComboLabel.text = str(player.confirmed_combo)+"x Combo"
         else:
             $ComboLabel.text = ""
-    if $Timer.visible and !timer_stopped:
+    if !timer_stopped:# and $Timer.visible:
         var newtime : float = OS.get_system_time_msecs() - time
         var msec = fmod(newtime, 1000)
         var sec = fmod(floor(newtime/1000), 60)

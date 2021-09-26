@@ -10,8 +10,8 @@ func cutscene():
     Manager.hide_timer()
     Manager.timer_stopped = true
     Manager.input_mode = "fadein"
-    $Whiteout.get_node("AnimationPlayer").play("fadein")
-    yield($Whiteout, "done")
+    if $Whiteout.get_node("AnimationPlayer").is_playing():
+        yield($Whiteout.get_node("AnimationPlayer"), "animation_finished")
     yield(get_tree().create_timer(0.5), "timeout")
     Manager.input_mode = "cutscene"
     $CuteGhost.fadein_splash()
@@ -33,17 +33,27 @@ func cutscene():
     
     Manager.timer_stopped = false
     Manager.reset_timer()
-    Manager.show_timer()
+    #Manager.show_timer()
 
 # Called when the node enters the scene tree for the first time.
+var startmode = "new"
 func _ready():
-    if true:
-        Manager.start_cutscene(self, "cutscene")
-    else:
-        $Whiteout.get_node("AnimationPlayer").play("fadein")
+    Manager.prepare_persists()
+    $Whiteout.get_node("AnimationPlayer").play("fadein")
+    Manager.timer_stopped = true
+    
+    Manager.input_mode = "fadein"
+    
+    if $Menu.waiting:
+        yield($Menu, "done")
+    
+    if startmode == "load":
         Manager.play_bgm(preload("res://bgm/slowly slowly everlasting.ogg"))
         Manager.input_mode = "gameplay"
-    pass # Replace with function body.
+        Manager.timer_stopped = false
+    else:
+        Manager.input_mode = "gameplay"
+        Manager.start_cutscene(self, "cutscene")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -30,6 +30,7 @@ var sounds = {
 \"spawn\": preload(\"res://sounds/spawnbeep.wav\"),
 \"hurtsound\": preload(\"res://sounds/hurtsound.wav\"),
 \"unexpectedoutcome\": preload(\"res://sounds/unexpectedoutcome.wav\"),
+\"progress\": preload(\"res://sounds/progress.wav\"),
 }
 
 func instance():

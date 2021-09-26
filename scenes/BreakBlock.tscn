@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://BreakBlock.gd" type="Script" id=1]
+[ext_resource path="res://scenes/BreakBlock.gd" type="Script" id=1]
 [ext_resource path="res://sounds/blockbreak.wav" type="AudioStream" id=2]
 [ext_resource path="res://art/entities/breakblock.png" type="Texture" id=3]
 
@@ -31,6 +31,7 @@ hue_variation = 0.05
 hue_variation_random = 0.26
 
 [node name="BreakBlock" type="KinematicBody2D" groups=[
+"Persist",
 "Slashable",
 ]]
 position = Vector2( 168, -456 )
@@ -43,7 +44,6 @@ shape = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-emitting = false
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 4 )
